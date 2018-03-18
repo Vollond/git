@@ -6,6 +6,8 @@ use TelegramBot\Api\BaseType;
 use TelegramBot\Api\TypeInterface;
 use TelegramBot\Api\Types\Inline\ChosenInlineResult;
 use TelegramBot\Api\Types\Inline\InlineQuery;
+use TelegramBot\Api\Types\Payments\Query\PreCheckoutQuery;
+use TelegramBot\Api\Types\Payments\Query\ShippingQuery;
 
 /**
  * Class Update
@@ -31,9 +33,14 @@ class Update extends BaseType implements TypeInterface
     static protected $map = [
         'update_id' => true,
         'message' => Message::class,
+        'edited_message' => Message::class,
+        'channel_post' => Message::class,
+        'edited_channel_post' => Message::class,
         'inline_query' => InlineQuery::class,
         'chosen_inline_result' => ChosenInlineResult::class,
         'callback_query' => CallbackQuery::class,
+        'shipping_query' => ShippingQuery::class,
+        'pre_checkout_query' => PreCheckoutQuery::class,
     ];
 
     /**
@@ -52,6 +59,27 @@ class Update extends BaseType implements TypeInterface
      * @var Message
      */
     protected $message;
+
+    /**
+     * Optional. New version of a message that is known to the bot and was edited
+     *
+     * @var Message
+     */
+    protected $editedMessage;
+
+    /**
+     * Optional. New incoming channel post of any kind — text, photo, sticker, etc.
+     *
+     * @var Message
+     */
+    protected $channelPost;
+
+    /**
+     * Optional. New version of a channel post that is known to the bot and was edited
+     *
+     * @var Message
+     */
+    protected $editedChannelPost;
 
     /**
      * Optional. New incoming inline query
@@ -73,6 +101,20 @@ class Update extends BaseType implements TypeInterface
      * @var \TelegramBot\Api\Types\CallbackQuery
      */
     protected $callbackQuery;
+
+    /**
+     * Optional. New incoming shipping query. Only for invoices with flexible price
+     *
+     * @var ShippingQuery
+     */
+    protected $shippingQuery;
+
+    /**
+     * Optional. New incoming pre-checkout query. Contains full information about checkout
+     *
+     * @var PreCheckoutQuery
+     */
+    protected $preCheckoutQuery;
 
     /**
      * @return int
@@ -104,6 +146,54 @@ class Update extends BaseType implements TypeInterface
     public function setMessage(Message $message)
     {
         $this->message = $message;
+    }
+
+    /**
+     * @return Message
+     */
+    public function getEditedMessage()
+    {
+        return $this->editedMessage;
+    }
+
+    /**
+     * @param Message $editedMessage
+     */
+    public function setEditedMessage($editedMessage)
+    {
+        $this->editedMessage = $editedMessage;
+    }
+
+    /**
+     * @return Message
+     */
+    public function getChannelPost()
+    {
+        return $this->channelPost;
+    }
+
+    /**
+     * @param Message $channelPost
+     */
+    public function setChannelPost($channelPost)
+    {
+        $this->channelPost = $channelPost;
+    }
+
+    /**
+     * @return Message
+     */
+    public function getEditedChannelPost()
+    {
+        return $this->editedChannelPost;
+    }
+
+    /**
+     * @param Message $editedChannelPost
+     */
+    public function setEditedChannelPost($editedChannelPost)
+    {
+        $this->editedChannelPost = $editedChannelPost;
     }
 
     /**
@@ -152,5 +242,41 @@ class Update extends BaseType implements TypeInterface
     public function setCallbackQuery($callbackQuery)
     {
         $this->callbackQuery = $callbackQuery;
+    }
+
+    /**
+     * @author MY
+     * @return ShippingQuery
+     */
+    public function getShippingQuery()
+    {
+        return $this->shippingQuery;
+    }
+
+    /**
+     * @author MY
+     * @param ShippingQuery $shippingQuery
+     */
+    public function setShippingQuery($shippingQuery)
+    {
+        $this->shippingQuery = $shippingQuery;
+    }
+
+    /**
+     * @author MY
+     * @return PreCheckoutQuery
+     */
+    public function getPreCheckoutQuery()
+    {
+        return $this->preCheckoutQuery;
+    }
+
+    /**
+     * @author MY
+     * @param PreCheckoutQuery $preCheckoutQuery
+     */
+    public function setPreCheckoutQuery($preCheckoutQuery)
+    {
+        $this->preCheckoutQuery = $preCheckoutQuery;
     }
 }

@@ -27,12 +27,19 @@ class Chat extends BaseType implements TypeInterface
         'username' => true,
         'first_name' => true,
         'last_name' => true,
+        'all_members_are_administrators' => true,
+        'photo' => ChatPhoto::class,
+        'description' => true,
+        'invite_link' => true,
+        'pinned_message' => Message::class,
+        'sticker_set_name' => true,
+        'can_set_sticker_set' => true
     ];
 
     /**
      * Unique identifier for this chat, not exceeding 1e13 by absolute value
      *
-     * @var int
+     * @var int|string
      */
     protected $id;
 
@@ -71,8 +78,52 @@ class Chat extends BaseType implements TypeInterface
      */
     protected $lastName;
 
+    protected $allMembersAreAdministrators;
+
     /**
-     * @return int
+     * Optional. Chat photo. Returned only in getChat.
+     *
+     * @var ChatPhoto
+     */
+    protected $photo;
+
+    /**
+     * Optional. Description, for supergroups and channel chats. Returned only in getChat.
+     *
+     * @var string
+     */
+    protected $description;
+
+    /**
+     * Optional. Chat invite link, for supergroups and channel chats. Returned only in getChat.
+     *
+     * @var string
+     */
+    protected $inviteLink;
+
+    /**
+     * Optional. Pinned message, for supergroups. Returned only in getChat.
+     *
+     * @var Message
+     */
+    protected $pinnedMessage;
+
+    /**
+     * Optional. For supergroups, name of group sticker set. Returned only in getChat.
+     *
+     * @var string
+     */
+    protected $stickerSetName;
+
+    /**
+     * Optional. True, if the bot can change the group sticker set. Returned only in getChat.
+     *
+     * @var bool
+     */
+    protected $canSetStickerSet;
+
+    /**
+     * @return int|string
      */
     public function getId()
     {
@@ -80,13 +131,13 @@ class Chat extends BaseType implements TypeInterface
     }
 
     /**
-     * @param int $id
+     * @param int|string $id
      *
      * @throws InvalidArgumentException
      */
     public function setId($id)
     {
-        if (is_integer($id) || is_float($id)) {
+        if (is_integer($id) || is_float($id) || is_string($id)) {
             $this->id = $id;
         } else {
             throw new InvalidArgumentException();
@@ -171,5 +222,117 @@ class Chat extends BaseType implements TypeInterface
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAllMembersAreAdministrators()
+    {
+        return $this->allMembersAreAdministrators;
+    }
+
+    /**
+     * @param mixed $allMembersAreAdministrators
+     */
+    public function setAllMembersAreAdministrators($allMembersAreAdministrators)
+    {
+        $this->allMembersAreAdministrators = $allMembersAreAdministrators;
+    }
+
+    /**
+     * @return ChatPhoto
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param ChatPhoto $photo
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInviteLink()
+    {
+        return $this->inviteLink;
+    }
+
+    /**
+     * @param string $inviteLink
+     */
+    public function setInviteLink($inviteLink)
+    {
+        $this->inviteLink = $inviteLink;
+    }
+
+    /**
+     * @return Message
+     */
+    public function getPinnedMessage()
+    {
+        return $this->pinnedMessage;
+    }
+
+    /**
+     * @param Message $pinnedMessage
+     */
+    public function setPinnedMessage($pinnedMessage)
+    {
+        $this->pinnedMessage = $pinnedMessage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStickerSetName()
+    {
+        return $this->stickerSetName;
+    }
+
+    /**
+     * @param string $stickerSetName
+     */
+    public function setStickerSetName($stickerSetName)
+    {
+        $this->stickerSetName = $stickerSetName;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCanSetStickerSet()
+    {
+        return $this->canSetStickerSet;
+    }
+
+    /**
+     * @param bool $canSetStickerSet
+     */
+    public function setCanSetStickerSet($canSetStickerSet)
+    {
+        $this->canSetStickerSet = $canSetStickerSet;
     }
 }

@@ -2,9 +2,13 @@
 
 namespace TelegramBot\Api;
 
+use TelegramBot\Api\Types\ArrayOfMessages;
 use TelegramBot\Api\Types\ArrayOfUpdates;
+use TelegramBot\Api\Types\Chat;
+use TelegramBot\Api\Types\ChatMember;
 use TelegramBot\Api\Types\File;
 use TelegramBot\Api\Types\Inline\QueryResult\AbstractInlineQueryResult;
+use TelegramBot\Api\Types\InputMedia\ArrayOfInputMedia;
 use TelegramBot\Api\Types\Message;
 use TelegramBot\Api\Types\Update;
 use TelegramBot\Api\Types\User;
@@ -238,7 +242,7 @@ class BotApi
         curl_setopt_array($this->curl, $options);
 
         $result = curl_exec($this->curl);
-        self::curlValidate($this->curl);
+        self::curlValidate($this->curl, $result);
         if ($result === false) {
             throw new HttpException(curl_error($this->curl), curl_errno($this->curl));
         }
@@ -250,15 +254,18 @@ class BotApi
      * Response validation
      *
      * @param resource $curl
-     *
-     * @throws \TelegramBot\Api\HttpException
+     * @param string $response
+     * @throws HttpException
      */
-    public static function curlValidate($curl)
+    public static function curlValidate($curl, $response = null)
     {
+        $json = json_decode($response, true)?: [];
         if (($httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE))
             && !in_array($httpCode, [self::DEFAULT_STATUS_CODE, self::NOT_MODIFIED_STATUS_CODE])
         ) {
-            throw new HttpException(self::$codes[$httpCode], $httpCode);
+            $errorDescription = array_key_exists('description', $json) ? $json['description'] : self::$codes[$httpCode];
+            $errorParameters = array_key_exists('parameters', $json) ? $json['parameters'] : [];
+            throw new HttpException($errorDescription, $httpCode, null, $errorParameters);
         }
     }
 
@@ -290,7 +297,8 @@ class BotApi
      * @param string|null $parseMode
      * @param bool $disablePreview
      * @param int|null $replyToMessageId
-     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|null $replyMarkup
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
      * @param bool $disableNotification
      *
      * @return \TelegramBot\Api\Types\Message
@@ -325,7 +333,8 @@ class BotApi
      * @param string $firstName
      * @param string $lastName
      * @param int|null $replyToMessageId
-     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|null $replyMarkup
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
      * @param bool $disableNotification
      *
      * @return \TelegramBot\Api\Types\Message
@@ -464,15 +473,16 @@ class BotApi
     /**
      * Use this method to send point on the map. On success, the sent Message is returned.
      *
-     * @param int $chatId
-     * @param float $latitude
-     * @param float $longitude
-     * @param int|null $replyToMessageId
-     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|null $replyMarkup
-     * @param bool $disableNotification
+     * @param int|string                                                              $chatId
+     * @param float                                                                   $latitude
+     * @param float                                                                   $longitude
+     * @param int|null                                                                $replyToMessageId
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
+     * @param bool                                                                    $disableNotification
      *
+     * @param null|int                                                                $livePeriod
      * @return \TelegramBot\Api\Types\Message
-     * @throws \TelegramBot\Api\Exception
      */
     public function sendLocation(
         $chatId,
@@ -480,15 +490,72 @@ class BotApi
         $longitude,
         $replyToMessageId = null,
         $replyMarkup = null,
-        $disableNotification = false
+        $disableNotification = false,
+        $livePeriod = null
     ) {
         return Message::fromResponse($this->call('sendLocation', [
-            'chat_id' => $chatId,
-            'latitude' => $latitude,
-            'longitude' => $longitude,
-            'reply_to_message_id' => $replyToMessageId,
-            'reply_markup' => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
+            'chat_id'              => $chatId,
+            'latitude'             => $latitude,
+            'longitude'            => $longitude,
+            'live_period'          => $livePeriod,
+            'reply_to_message_id'  => $replyToMessageId,
+            'reply_markup'         => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
             'disable_notification' => (bool)$disableNotification,
+        ]));
+    }
+
+    /**
+     * Use this method to edit live location messages sent by the bot or via the bot (for inline bots).
+     *
+     * @param int|string                                                              $chatId
+     * @param int                                                                     $messageId
+     * @param string                                                                  $inlineMessageId
+     * @param float                                                                   $latitude
+     * @param float                                                                   $longitude
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
+     * @return \TelegramBot\Api\Types\Message
+     */
+    public function editMessageLiveLocation(
+        $chatId,
+        $messageId,
+        $inlineMessageId,
+        $latitude,
+        $longitude,
+        $replyMarkup = null
+    ) {
+        return Message::fromResponse($this->call('sendLocation', [
+            'chat_id'           => $chatId,
+            'message_id'        => $messageId,
+            'inline_message_id' => $inlineMessageId,
+            'latitude'          => $latitude,
+            'longitude'         => $longitude,
+            'reply_markup'      => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
+        ]));
+    }
+
+    /**
+     * Use this method to stop updating a live location message sent by the bot or via the bot (for inline bots) before
+     * live_period expires.
+     *
+     * @param int|string                                                              $chatId
+     * @param int                                                                     $messageId
+     * @param string                                                                  $inlineMessageId
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
+     * @return \TelegramBot\Api\Types\Message
+     */
+    public function stopMessageLiveLocation(
+        $chatId,
+        $messageId,
+        $inlineMessageId,
+        $replyMarkup = null
+    ) {
+        return Message::fromResponse($this->call('sendLocation', [
+            'chat_id'           => $chatId,
+            'message_id'        => $messageId,
+            'inline_message_id' => $inlineMessageId,
+            'reply_markup'      => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
         ]));
     }
 
@@ -502,7 +569,8 @@ class BotApi
      * @param string $address
      * @param string|null $foursquareId
      * @param int|null $replyToMessageId
-     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|null $replyMarkup
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
      * @param bool $disableNotification
      *
      * @return \TelegramBot\Api\Types\Message
@@ -538,7 +606,8 @@ class BotApi
      * @param int|string $chatId chat_id or @channel_name
      * @param \CURLFile|string $sticker
      * @param int|null $replyToMessageId
-     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|null $replyMarkup
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
      * @param bool $disableNotification
      *
      * @return \TelegramBot\Api\Types\Message
@@ -571,8 +640,11 @@ class BotApi
      * @param int|null $duration
      * @param string|null $caption
      * @param int|null $replyToMessageId
-     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|null $replyMarkup
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
      * @param bool $disableNotification
+     * @param bool $supportsStreaming Pass True, if the uploaded video is suitable for streaming
+     * @param string|null $parseMode
      *
      * @return \TelegramBot\Api\Types\Message
      * @throws \TelegramBot\Api\InvalidArgumentException
@@ -585,7 +657,9 @@ class BotApi
         $caption = null,
         $replyToMessageId = null,
         $replyMarkup = null,
-        $disableNotification = false
+        $disableNotification = false,
+        $supportsStreaming = false,
+        $parseMode = null
     ) {
         return Message::fromResponse($this->call('sendVideo', [
             'chat_id' => $chatId,
@@ -595,6 +669,8 @@ class BotApi
             'reply_to_message_id' => $replyToMessageId,
             'reply_markup' => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
             'disable_notification' => (bool)$disableNotification,
+            'supports_streaming' => (bool)$supportsStreaming,
+            'parse_mode' => $parseMode
         ]));
     }
 
@@ -610,8 +686,10 @@ class BotApi
      * @param \CURLFile|string $voice
      * @param int|null $duration
      * @param int|null $replyToMessageId
-     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|null $replyMarkup
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
      * @param bool $disableNotification
+     * @param string|null $parseMode
      *
      * @return \TelegramBot\Api\Types\Message
      * @throws \TelegramBot\Api\InvalidArgumentException
@@ -623,7 +701,8 @@ class BotApi
         $duration = null,
         $replyToMessageId = null,
         $replyMarkup = null,
-        $disableNotification = false
+        $disableNotification = false,
+        $parseMode = null
     ) {
         return Message::fromResponse($this->call('sendVoice', [
             'chat_id' => $chatId,
@@ -632,6 +711,7 @@ class BotApi
             'reply_to_message_id' => $replyToMessageId,
             'reply_markup' => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
             'disable_notification' => (bool)$disableNotification,
+            'parse_mode' => $parseMode
         ]));
     }
 
@@ -679,8 +759,10 @@ class BotApi
      * @param string|null $performer
      * @param string|null $title
      * @param int|null $replyToMessageId
-     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|null $replyMarkup
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
      * @param bool $disableNotification
+     * @param string|null $parseMode
      *
      * @return \TelegramBot\Api\Types\Message
      * @throws \TelegramBot\Api\InvalidArgumentException
@@ -694,7 +776,8 @@ class BotApi
         $title = null,
         $replyToMessageId = null,
         $replyMarkup = null,
-        $disableNotification = false
+        $disableNotification = false,
+        $parseMode = null
     ) {
         return Message::fromResponse($this->call('sendAudio', [
             'chat_id' => $chatId,
@@ -705,6 +788,7 @@ class BotApi
             'reply_to_message_id' => $replyToMessageId,
             'reply_markup' => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
             'disable_notification' => (bool)$disableNotification,
+            'parse_mode' => $parseMode
         ]));
     }
 
@@ -715,8 +799,10 @@ class BotApi
      * @param \CURLFile|string $photo
      * @param string|null $caption
      * @param int|null $replyToMessageId
-     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|null $replyMarkup
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
      * @param bool $disableNotification
+     * @param string|null $parseMode
      *
      * @return \TelegramBot\Api\Types\Message
      * @throws \TelegramBot\Api\InvalidArgumentException
@@ -728,7 +814,8 @@ class BotApi
         $caption = null,
         $replyToMessageId = null,
         $replyMarkup = null,
-        $disableNotification = false
+        $disableNotification = false,
+        $parseMode = null
     ) {
         return Message::fromResponse($this->call('sendPhoto', [
             'chat_id' => $chatId,
@@ -737,6 +824,7 @@ class BotApi
             'reply_to_message_id' => $replyToMessageId,
             'reply_markup' => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
             'disable_notification' => (bool)$disableNotification,
+            'parse_mode' => $parseMode
         ]));
     }
 
@@ -746,9 +834,12 @@ class BotApi
      *
      * @param int|string $chatId chat_id or @channel_name
      * @param \CURLFile|string $document
+     * @param string|null $caption
      * @param int|null $replyToMessageId
-     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|null $replyMarkup
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
      * @param bool $disableNotification
+     * @param string|null $parseMode
      *
      * @return \TelegramBot\Api\Types\Message
      * @throws \TelegramBot\Api\InvalidArgumentException
@@ -757,16 +848,20 @@ class BotApi
     public function sendDocument(
         $chatId,
         $document,
+        $caption = null,
         $replyToMessageId = null,
         $replyMarkup = null,
-        $disableNotification = false
+        $disableNotification = false,
+        $parseMode = null
     ) {
         return Message::fromResponse($this->call('sendDocument', [
             'chat_id' => $chatId,
             'document' => $document,
+            'caption' => $caption,
             'reply_to_message_id' => $replyToMessageId,
             'reply_markup' => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
             'disable_notification' => (bool)$disableNotification,
+            'parse_mode' => $parseMode
         ]));
     }
 
@@ -821,15 +916,23 @@ class BotApi
      * @param int $cacheTime
      * @param bool $isPersonal
      * @param string $nextOffset
+     * @param string $switchPmText
+     * @param string $switchPmParameter
      *
      * @return mixed
      * @throws Exception
      */
-    public function answerInlineQuery($inlineQueryId, $results, $cacheTime = 300, $isPersonal = false, $nextOffset = '')
-    {
+    public function answerInlineQuery(
+        $inlineQueryId,
+        $results,
+        $cacheTime = 300,
+        $isPersonal = false,
+        $nextOffset = '',
+        $switchPmText = null,
+        $switchPmParameter = null
+    ) {
         $results = array_map(function ($item) {
             /* @var AbstractInlineQueryResult $item */
-
             return json_decode($item->toJson(), true);
         }, $results);
 
@@ -839,6 +942,8 @@ class BotApi
             'cache_time' => $cacheTime,
             'is_personal' => $isPersonal,
             'next_offset' => $nextOffset,
+            'switch_pm_text' => $switchPmText,
+            'switch_pm_parameter' => $switchPmParameter,
         ]);
     }
 
@@ -851,14 +956,18 @@ class BotApi
      * @param int|string $chatId Unique identifier for the target group
      * or username of the target supergroup (in the format @supergroupusername)
      * @param int $userId Unique identifier of the target user
+     * @param null|int $untilDate Date when the user will be unbanned, unix time.
+     *                            If user is banned for more than 366 days or less than 30 seconds from the current time
+     *                            they are considered to be banned forever
      *
      * @return bool
      */
-    public function kickChatMember($chatId, $userId)
+    public function kickChatMember($chatId, $userId, $untilDate = null)
     {
         return $this->call('kickChatMember', [
             'chat_id' => $chatId,
             'user_id' => $userId,
+            'until_date' => $untilDate
         ]);
     }
 
@@ -907,13 +1016,12 @@ class BotApi
      * @param int|string $chatId
      * @param int $messageId
      * @param string $text
+     * @param string $inlineMessageId
      * @param string|null $parseMode
      * @param bool $disablePreview
-     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|null $replyMarkup
-     *
-     * @return \TelegramBot\Api\Types\Message
-     * @throws \TelegramBot\Api\InvalidArgumentException
-     * @throws \TelegramBot\Api\Exception
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
+     * @return Message
      */
     public function editMessageText(
         $chatId,
@@ -921,12 +1029,14 @@ class BotApi
         $text,
         $parseMode = null,
         $disablePreview = false,
-        $replyMarkup = null
+        $replyMarkup = null,
+        $inlineMessageId = null
     ) {
         return Message::fromResponse($this->call('editMessageText', [
             'chat_id' => $chatId,
             'message_id' => $messageId,
             'text' => $text,
+            'inline_message_id' => $inlineMessageId,
             'parse_mode' => $parseMode,
             'disable_web_page_preview' => $disablePreview,
             'reply_markup' => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
@@ -939,7 +1049,9 @@ class BotApi
      * @param int|string $chatId
      * @param int $messageId
      * @param string|null $caption
-     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|null $replyMarkup
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
+     * @param string $inlineMessageId
      *
      * @return \TelegramBot\Api\Types\Message
      * @throws \TelegramBot\Api\InvalidArgumentException
@@ -949,11 +1061,13 @@ class BotApi
         $chatId,
         $messageId,
         $caption = null,
-        $replyMarkup = null
+        $replyMarkup = null,
+        $inlineMessageId = null
     ) {
-        return Message::fromResponse($this->call('editMessageText', [
+        return Message::fromResponse($this->call('editMessageCaption', [
             'chat_id' => $chatId,
             'message_id' => $messageId,
+            'inline_message_id' => $inlineMessageId,
             'caption' => $caption,
             'reply_markup' => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
         ]));
@@ -964,22 +1078,45 @@ class BotApi
      *
      * @param int|string $chatId
      * @param int $messageId
-     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|null $replyMarkup
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
+     * @param string $inlineMessageId
      *
-     * @return \TelegramBot\Api\Types\Message
-     * @throws \TelegramBot\Api\InvalidArgumentException
-     * @throws \TelegramBot\Api\Exception
+     * @return Message
      */
     public function editMessageReplyMarkup(
         $chatId,
         $messageId,
-        $replyMarkup = null
+        $replyMarkup = null,
+        $inlineMessageId = null
     ) {
-        return Message::fromResponse($this->call('editMessageText', [
+        return Message::fromResponse($this->call('editMessageReplyMarkup', [
             'chat_id' => $chatId,
             'message_id' => $messageId,
+            'inline_message_id' => $inlineMessageId,
             'reply_markup' => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
         ]));
+    }
+
+    /**
+     * Use this method to delete a message, including service messages, with the following limitations:
+     *  - A message can only be deleted if it was sent less than 48 hours ago.
+     *  - Bots can delete outgoing messages in groups and supergroups.
+     *  - Bots granted can_post_messages permissions can delete outgoing messages in channels.
+     *  - If the bot is an administrator of a group, it can delete any message there.
+     *  - If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.
+     *
+     * @param int|string $chatId
+     * @param int $messageId
+     *
+     * @return bool
+     */
+    public function deleteMessage($chatId, $messageId)
+    {
+        return $this->call('deleteMessage', [
+            'chat_id' => $chatId,
+            'message_id' => $messageId,
+        ]);
     }
 
     /**
@@ -1038,5 +1175,488 @@ class BotApi
         if ($this->tracker instanceof Botan) {
             $this->tracker->track($message, $eventName);
         }
+    }
+
+    /**
+     * Use this method to send invoices. On success, the sent Message is returned.
+     *
+     * @param int|string $chatId
+     * @param string $title
+     * @param string $description
+     * @param string $payload
+     * @param string $providerToken
+     * @param string $startParameter
+     * @param string $currency
+     * @param array $prices
+     * @param string|null $photoUrl
+     * @param int|null $photoSize
+     * @param int|null $photoWidth
+     * @param int|null $photoHeight
+     * @param bool $needName
+     * @param bool $needPhoneNumber
+     * @param bool $needEmail
+     * @param bool $needShippingAddress
+     * @param bool $isFlexible
+     * @param int|null $replyToMessageId
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
+     * @param bool $disableNotification
+     * @param string|null $providerData
+     * @param bool $sendPhoneNumberToProvider
+     * @param bool $sendEmailToProvider
+     *
+     * @return Message
+     */
+    public function sendInvoice(
+        $chatId,
+        $title,
+        $description,
+        $payload,
+        $providerToken,
+        $startParameter,
+        $currency,
+        $prices,
+        $isFlexible = false,
+        $photoUrl = null,
+        $photoSize = null,
+        $photoWidth = null,
+        $photoHeight = null,
+        $needName = false,
+        $needPhoneNumber = false,
+        $needEmail = false,
+        $needShippingAddress = false,
+        $replyToMessageId = null,
+        $replyMarkup = null,
+        $disableNotification = false,
+        $providerData = null,
+        $sendPhoneNumberToProvider = false,
+        $sendEmailToProvider = false
+    ) {
+        return Message::fromResponse($this->call('sendInvoice', [
+            'chat_id' => $chatId,
+            'title' => $title,
+            'description' => $description,
+            'payload' => $payload,
+            'provider_token' => $providerToken,
+            'start_parameter' => $startParameter,
+            'currency' => $currency,
+            'prices' => json_encode($prices),
+            'is_flexible' => $isFlexible,
+            'photo_url' => $photoUrl,
+            'photo_size' => $photoSize,
+            'photo_width' => $photoWidth,
+            'photo_height' => $photoHeight,
+            'need_name' => $needName,
+            'need_phone_number' => $needPhoneNumber,
+            'need_email' => $needEmail,
+            'need_shipping_address' => $needShippingAddress,
+            'reply_to_message_id' => $replyToMessageId,
+            'reply_markup' => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
+            'disable_notification' => (bool)$disableNotification,
+            'provider_data' => $providerData,
+            'send_phone_number_to_provider' => (bool)$sendPhoneNumberToProvider,
+            'send_email_to_provider' => (bool)$sendEmailToProvider
+        ]));
+    }
+
+    /**
+     * If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API
+     * will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries.
+     * On success, True is returned.
+     *
+     * @param string $shippingQueryId
+     * @param bool $ok
+     * @param array $shipping_options
+     * @param null|string $errorMessage
+     *
+     * @return bool
+     *
+     */
+    public function answerShippingQuery($shippingQueryId, $ok = true, $shipping_options = [], $errorMessage = null)
+    {
+        return $this->call('answerShippingQuery', [
+            'shipping_query_id' => $shippingQueryId,
+            'ok' => (bool)$ok,
+            'shipping_options' => json_encode($shipping_options),
+            'error_message' => $errorMessage
+        ]);
+    }
+
+    /**
+     * Use this method to respond to such pre-checkout queries. On success, True is returned.
+     * Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.
+     *
+     * @param string $preCheckoutQueryId
+     * @param bool $ok
+     * @param null|string $errorMessage
+     *
+     * @return mixed
+     */
+    public function answerPreCheckoutQuery($preCheckoutQueryId, $ok = true, $errorMessage = null)
+    {
+        return $this->call('answerPreCheckoutQuery', [
+            'pre_checkout_query_id' => $preCheckoutQueryId,
+            'ok' => (bool)$ok,
+            'error_message' => $errorMessage
+        ]);
+    }
+
+    /**
+     * Use this method to restrict a user in a supergroup.
+     * The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights.
+     * Pass True for all boolean parameters to lift restrictions from a user.
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target supergroup
+     *                   (in the format @supergroupusername)
+     * @param int $userId Unique identifier of the target user
+     * @param null|integer $untilDate Date when restrictions will be lifted for the user, unix time.
+     *                     If user is restricted for more than 366 days or less than 30 seconds from the current time,
+     *                     they are considered to be restricted forever
+     * @param bool $canSendMessages Pass True, if the user can send text messages, contacts, locations and venues
+     * @param bool $canSendMediaMessages No Pass True, if the user can send audios, documents, photos, videos,
+     *                                   video notes and voice notes, implies can_send_messages
+     * @param bool $canSendOtherMessages Pass True, if the user can send animations, games, stickers and
+     *                                   use inline bots, implies can_send_media_messages
+     * @param bool $canAddWebPagePreviews Pass True, if the user may add web page previews to their messages,
+     *                                    implies can_send_media_messages
+     *
+     * @return bool
+     */
+    public function restrictChatMember(
+        $chatId,
+        $userId,
+        $untilDate = null,
+        $canSendMessages = false,
+        $canSendMediaMessages = false,
+        $canSendOtherMessages = false,
+        $canAddWebPagePreviews = false
+    ) {
+        return $this->call('restrictChatMember', [
+            'chat_id' => $chatId,
+            'user_id' => $userId,
+            'until_date' => $untilDate,
+            'can_send_messages' => $canSendMessages,
+            'can_send_media_messages' => $canSendMediaMessages,
+            'can_send_other_messages' => $canSendOtherMessages,
+            'can_add_web_page_previews' => $canAddWebPagePreviews
+        ]);
+    }
+
+    /**
+     * Use this method to promote or demote a user in a supergroup or a channel.
+     * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
+     * Pass False for all boolean parameters to demote a user.
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target supergroup
+     *                   (in the format @supergroupusername)
+     * @param int $userId Unique identifier of the target user
+     * @param bool $canChangeInfo Pass True, if the administrator can change chat title, photo and other settings
+     * @param bool $canPostMessages Pass True, if the administrator can create channel posts, channels only
+     * @param bool $canEditMessages Pass True, if the administrator can edit messages of other users, channels only
+     * @param bool $canDeleteMessages Pass True, if the administrator can delete messages of other users
+     * @param bool $canInviteUsers Pass True, if the administrator can invite new users to the chat
+     * @param bool $canRestrictMembers Pass True, if the administrator can restrict, ban or unban chat members
+     * @param bool $canPinMessages Pass True, if the administrator can pin messages, supergroups only
+     * @param bool $canPromoteMembers Pass True, if the administrator can add new administrators with a subset of his
+     *                                own privileges or demote administrators that he has promoted,directly or
+     *                                indirectly (promoted by administrators that were appointed by him)
+     *
+     * @return bool
+     */
+    public function promoteChatMember(
+        $chatId,
+        $userId,
+        $canChangeInfo = true,
+        $canPostMessages = true,
+        $canEditMessages = true,
+        $canDeleteMessages = true,
+        $canInviteUsers = true,
+        $canRestrictMembers = true,
+        $canPinMessages = true,
+        $canPromoteMembers = true
+    ) {
+        return $this->call('promoteChatMember', [
+            'chat_id' => $chatId,
+            'user_id' => $userId,
+            'can_change_info' => $canChangeInfo,
+            'can_post_messages' => $canPostMessages,
+            'can_edit_messages' => $canEditMessages,
+            'can_delete_messages' => $canDeleteMessages,
+            'can_invite_users' => $canInviteUsers,
+            'can_restrict_members' => $canRestrictMembers,
+            'can_pin_messages' => $canPinMessages,
+            'can_promote_members' => $canPromoteMembers
+        ]);
+    }
+
+    /**
+     * Use this method to export an invite link to a supergroup or a channel.
+     * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target channel
+     *                           (in the format @channelusername)
+     * @return string
+     */
+    public function exportChatInviteLink($chatId)
+    {
+        return $this->call('exportChatInviteLink', [
+            'chat_id' => $chatId
+        ]);
+    }
+
+    /**
+     * Use this method to set a new profile photo for the chat. Photos can't be changed for private chats.
+     * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target channel
+     *                           (in the format @channelusername)
+     * @param \CURLFile|string $photo New chat photo, uploaded using multipart/form-data
+     *
+     * @return bool
+     */
+    public function setChatPhoto($chatId, $photo)
+    {
+        return $this->call('setChatPhoto', [
+            'chat_id' => $chatId,
+            'photo' => $photo
+        ]);
+    }
+
+    /**
+     * Use this method to delete a chat photo. Photos can't be changed for private chats.
+     * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target channel
+     *                           (in the format @channelusername)
+     *
+     * @return bool
+     */
+    public function deleteChatPhoto($chatId)
+    {
+        return $this->call('deleteChatPhoto', [
+            'chat_id' => $chatId
+        ]);
+    }
+
+    /**
+     * Use this method to change the title of a chat. Titles can't be changed for private chats.
+     * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target channel
+     *                           (in the format @channelusername)
+     * @param string $title New chat title, 1-255 characters
+     *
+     * @return bool
+     */
+    public function setChatTitle($chatId, $title)
+    {
+        return $this->call('setChatTitle', [
+            'chat_id' => $chatId,
+            'title' => $title
+        ]);
+    }
+
+    /**
+     * Use this method to change the description of a supergroup or a channel.
+     * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target channel
+     *                   (in the format @channelusername)
+     * @param string|null $description New chat description, 0-255 characters
+     *
+     * @return bool
+     */
+    public function setChatDescription($chatId, $description = null)
+    {
+        return $this->call('setChatDescription', [
+            'chat_id' => $chatId,
+            'title' => $description
+        ]);
+    }
+
+    /**
+     * Use this method to pin a message in a supergroup.
+     * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target channel
+     *                   (in the format @channelusername)
+     * @param int $messageId Identifier of a message to pin
+     * @param bool $disableNotification
+     *
+     * @return bool
+     */
+    public function pinChatMessage($chatId, $messageId, $disableNotification = false)
+    {
+        return $this->call('pinChatMessage', [
+            'chat_id' => $chatId,
+            'message_id' => $messageId,
+            'disable_notification' => $disableNotification
+        ]);
+    }
+
+    /**
+     * Use this method to unpin a message in a supergroup chat.
+     * The bot must be an administrator in the chat for this to work and must have the appropriate admin rights.
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target channel
+     *                   (in the format @channelusername)
+     *
+     * @return bool
+     */
+    public function unpinChatMessage($chatId)
+    {
+        return $this->call('unpinChatMessage', [
+            'chat_id' => $chatId
+        ]);
+    }
+
+    /**
+     * Use this method to get up to date information about the chat
+     * (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.).
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target channel
+     *                   (in the format @channelusername)
+     *
+     * @return Chat
+     */
+    public function getChat($chatId)
+    {
+        return Chat::fromResponse($this->call('getChat', [
+            'chat_id' => $chatId
+        ]));
+    }
+
+    /**
+     * Use this method to get information about a member of a chat.
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target channel
+     *                   (in the format @channelusername)
+     * @param int $userId
+     *
+     * @return ChatMember
+     */
+    public function getChatMember($chatId, $userId)
+    {
+        return ChatMember::fromResponse($this->call('getChatMember', [
+            'chat_id' => $chatId,
+            'user_id' => $userId
+        ]));
+    }
+
+    /**
+     * Use this method for your bot to leave a group, supergroup or channel.
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target channel
+     *                   (in the format @channelusername)
+     *
+     * @return bool
+     */
+    public function leaveChat($chatId)
+    {
+        return $this->call('leaveChat', [
+            'chat_id' => $chatId
+        ]);
+    }
+
+    /**
+     * Use this method to get the number of members in a chat.
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target channel
+     *                   (in the format @channelusername)
+     *
+     * @return int
+     */
+    public function getChatMembersCount($chatId)
+    {
+        return $this->call(
+            'getChatMembersCount',
+            [
+                'chat_id' => $chatId
+            ]
+        );
+    }
+
+    /**
+     * Use this method to get a list of administrators in a chat.
+     *
+     * @param string|int $chatId Unique identifier for the target chat or username of the target channel
+     *                   (in the format @channelusername)
+     *
+     * @return array
+     */
+    public function getChatAdministrators($chatId)
+    {
+        return ArrayOfChatMemberEntity::fromResponse(
+            $this->call(
+                'getChatMembersCount',
+                [
+                    'chat_id' => $chatId
+                ]
+            )
+        );
+    }
+
+    /**
+     * As of v.4.0, Telegram clients support rounded square mp4 videos of up to 1 minute long.
+     * Use this method to send video messages.
+     * On success, the sent Message is returned.
+     *
+     * @param int|string $chatId chat_id or @channel_name
+     * @param \CURLFile|string $videoNote
+     * @param int|null $duration
+     * @param int|null $length
+     * @param int|null $replyToMessageId
+     * @param Types\ReplyKeyboardMarkup|Types\ReplyKeyboardHide|Types\ForceReply|
+     *        Types\ReplyKeyboardRemove|null $replyMarkup
+     * @param bool $disableNotification
+     *
+     * @return \TelegramBot\Api\Types\Message
+     * @throws \TelegramBot\Api\InvalidArgumentException
+     * @throws \TelegramBot\Api\Exception
+     */
+    public function sendVideoNote(
+        $chatId,
+        $videoNote,
+        $duration = null,
+        $length = null,
+        $replyToMessageId = null,
+        $replyMarkup = null,
+        $disableNotification = false
+    ) {
+        return Message::fromResponse($this->call('sendVideoNote', [
+            'chat_id' => $chatId,
+            'video_note' => $videoNote,
+            'duration' => $duration,
+            'length' => $length,
+            'reply_to_message_id' => $replyToMessageId,
+            'reply_markup' => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
+            'disable_notification' => (bool)$disableNotification
+        ]));
+    }
+
+    /**
+     * Use this method to send a group of photos or videos as an album.
+     * On success, the sent \TelegramBot\Api\Types\Message is returned.
+     *
+     * @param int|string $chatId
+     * @param ArrayOfInputMedia $media
+     * @param int|null $replyToMessageId
+     * @param bool $disableNotification
+     *
+     * @return array
+     * @throws \TelegramBot\Api\Exception
+     */
+    public function sendMediaGroup(
+        $chatId,
+        $media,
+        $disableNotification = false,
+        $replyToMessageId = null
+    ) {
+        return ArrayOfMessages::fromResponse($this->call('sendMediaGroup', [
+            'chat_id' => $chatId,
+            'media' => $media->toJson(),
+            'reply_to_message_id' => (int)$replyToMessageId,
+            'disable_notification' => (bool)$disableNotification
+        ]));
     }
 }

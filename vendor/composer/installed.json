@@ -1,17 +1,17 @@
 [
     {
         "name": "telegram-bot/api",
-        "version": "2.2.9",
-        "version_normalized": "2.2.9.0",
+        "version": "v2.3.8",
+        "version_normalized": "2.3.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/TelegramBot/Api.git",
-            "reference": "71e9c7ea33a7a23ceadd2086243a209e46bcd6dd"
+            "reference": "7ceb6f8a23707cb5e93c5efa284c754be5aab982"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/TelegramBot/Api/zipball/71e9c7ea33a7a23ceadd2086243a209e46bcd6dd",
-            "reference": "71e9c7ea33a7a23ceadd2086243a209e46bcd6dd",
+            "url": "https://api.github.com/repos/TelegramBot/Api/zipball/7ceb6f8a23707cb5e93c5efa284c754be5aab982",
+            "reference": "7ceb6f8a23707cb5e93c5efa284c754be5aab982",
             "shasum": ""
         },
         "require": {
@@ -19,10 +19,10 @@
         },
         "require-dev": {
             "codeception/codeception": "*",
-            "phpunit/phpunit": "4.*",
+            "phpunit/phpunit": "~4.0",
             "squizlabs/php_codesniffer": "2.*"
         },
-        "time": "2017-04-14T20:52:43+00:00",
+        "time": "2018-03-16T14:14:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
