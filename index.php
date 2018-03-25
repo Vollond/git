@@ -710,6 +710,16 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001338957812, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
+				if(($uname!="nitcshe")&&($uname!="upRiseup")){ 
+	if($cid==-1001198436799){
+	if($message->getChat()->getUsername() == "afrodita0"){
+	$bot->deleteMessage(-1001198436799, $message->getMessageId());	
+	//$bot->sendMessage("322682583", "$uname : $mtext");
+	$txt="$uname :  $mtext";
+	logg($txt);
+	$bot->restrictChatMember(-1001198436799, $uid , strtotime("+3660 days"), false, false, false, false);
+	}}}
+	
 	
 	if(mb_stripos($mtext,"Сиськи") !== false){
 		$pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
