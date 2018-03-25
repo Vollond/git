@@ -680,9 +680,19 @@ $bot->on(function($Update) use ($bot){
 	if($name!="nitcshe"){
 	//$message->getFrom()->getId() 406900318
 	}
-	if(($uname!="nitcshe")&&($uname!="upRiseup")){ 
-	if($cid==-1001394826177){
+	if(($uname!="upRiseup")&&($uname!="Legend19")){ 
+	if($cid==-1001256758693){
 	if($message->getChat()->getUsername() == "advanceup"){
+	$bot->deleteMessage(-1001256758693, $message->getMessageId());	
+	//$bot->sendMessage("322682583", "$uname : $mtext");
+	$txt="$uname :  $mtext";
+	logg($txt);
+	$bot->restrictChatMember(-1001256758693, $uid , strtotime("+3660 days"), false, false, false, false);
+	}}}
+	///
+		if(($uname!="nitcshe")&&($uname!="upRiseup")){ 
+	if($cid==-1001394826177){
+	if($message->getChat()->getUsername() == "atiznalllpodpiska"){
 	$bot->deleteMessage(-1001394826177, $message->getMessageId());	
 	//$bot->sendMessage("322682583", "$uname : $mtext");
 	$txt="$uname :  $mtext";
