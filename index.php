@@ -700,7 +700,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001394826177, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-			if(($uname!="nitcshe")&&($uname!="upRiseup")){ 
+			if(($uname!="Roman_rubin")&&($uname!="upRiseup")){ 
 	if($cid==-1001338957812){
 	if($message->getChat()->getUsername() == "igatget0"){
 	$bot->deleteMessage(-1001338957812, $message->getMessageId());	
