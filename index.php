@@ -730,7 +730,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001235118466, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-					if(($uname!="smehsnim")&&($uname!="Manager_Advanceup")){ 
+					if(($uname!="smehsni")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001269007777){
 	if($message->getChat()->getUsername() == "anekdot_history"){
 	$bot->deleteMessage(-1001269007777, $message->getMessageId());	
