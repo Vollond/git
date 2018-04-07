@@ -19,7 +19,7 @@ $token = "487405665:AAF3w09dg4a-of_ZBCmEWolqbZqNh1P6Yuk";
 $bot = new \TelegramBot\Api\Client($token,null);
 
 if($_GET["bname"] == "revcombot"){
-	$bot->sendMessage("@burgercaputt", "Тест");
+	//$bot->sendMessage("@burgercaputt", "Тест");
 }
 
 // если бот еще не зарегистрирован - регистируем
@@ -36,6 +36,8 @@ if(!file_exists("registered.trigger")){
 		file_put_contents("registered.trigger",time()); // создаем файл дабы прекратить повторные регистрации
 	} else die("ошибка регистрации");
 }
+
+/*
 function logg($txt) {
 	$file = 'logg.txt';
 $current = file_get_contents($file);
@@ -106,9 +108,10 @@ function kk(){
 		return $current;}
  	return $current;
 }   
-
+*/
 // Команды бота
 // пинг. Тестовая
+/*
 $bot->command('ping', function ($message) use ($bot) {
 	$bot->sendMessage("@nitcshe", '#Услуги #Продам
 1. 👨‍👩‍👧‍👦 Накрутка подписчиков в каналы и чаты
@@ -127,16 +130,17 @@ $bot->command('ping', function ($message) use ($bot) {
 Подробнее - @ProgProm
 ');
 });
-
+*/
 //-1001088197401
+/*
 $bot->command('bann', function ($message) use ($bot) {
 $bot->sendMessage($message->getChat()->getId(), "1");
 $bot->restrictChatMember(-1001088197401, 397432994, strtotime("+5 days"), false, false, false, false);
 $bot->sendMessage($message->getChat()->getId(), "да?");
 });
+*/
 
-
-
+/*
 $bot->command('prom', function ($message) use ($bot) {
 //$bot->sendMessage($message->getChat()->getId(), "1");
 //$bot->promoteChatMember(-1001088197401, 441528629, can_pin_messages=True);
@@ -171,9 +175,9 @@ $bot->command('cat', function ($message) use ($bot) {
 	$bot->sendMessage("322682583", "asd" );
 	$bot->sendMessage("322682583", $bot->getChatMembersCount(-1001130109518));
 });
+*/
 
-
-
+/*
 $bot->command('test_t', function ($message) use ($bot) {
 
 	if((bd(777)!='stop')&&(ad(777)!='stop')){
@@ -319,7 +323,7 @@ $bot->sendMessage($message->getChat()->getId(), "$x 03");sleep(40);
 По всем вопросам обращаться -  @Palanikbot
 Подробнее - @ProgProm
 ');
-$bot->sendMessage($message->getChat()->getId(), "$x 04");sleep(40);
+$bot->sendMessage($message->getChat()->getId(), "$x 04");sleep(40); */
 	/*	$bot->sendMessage("-1001109113929", '#Услуги #Продам
 1. 👨‍👩‍👧‍👦 Накрутка подписчиков в каналы и чаты
 Не боты. Подписчики живые, активные. Не отписываются и не банятся. Просматривают посты.
@@ -337,6 +341,7 @@ $bot->sendMessage($message->getChat()->getId(), "$x 04");sleep(40);
 Подробнее - @ProgProm
 ');
 $bot->sendMessage($message->getChat()->getId(), "$x 05");sleep(40); */
+/*
 		$bot->sendMessage("-1001089694021", '#Услуги #Продам
 1. 👨‍👩‍👧‍👦 Накрутка подписчиков в каналы и чаты
 Не боты. Подписчики живые, активные. Не отписываются и не банятся. Просматривают посты.
@@ -369,7 +374,7 @@ $bot->sendMessage($message->getChat()->getId(), "$x 06");sleep(40);
 
 По всем вопросам обращаться -  @Palanikbot
 Подробнее - @ProgProm
-');
+'); */
 $bot->sendMessage($message->getChat()->getId(), "$x 07");sleep(40);/*
 		$bot->sendMessage("-1001113516975", '#Услуги #Продам
 1. 👨‍👩‍👧‍👦 Накрутка подписчиков в каналы и чаты
@@ -388,6 +393,7 @@ $bot->sendMessage($message->getChat()->getId(), "$x 07");sleep(40);/*
 Подробнее - @ProgProm
 ');
 $bot->sendMessage($message->getChat()->getId(), "$x 08");sleep(40);*/
+/*
 		$bot->sendMessage("-1001070493759", '#Услуги #Продам
 1. 👨‍👩‍👧‍👦 Накрутка подписчиков в каналы и чаты
 Не боты. Подписчики живые, активные. Не отписываются и не банятся. Просматривают посты.
@@ -439,6 +445,7 @@ $bot->sendMessage($message->getChat()->getId(), "$x 010");sleep(40);
 Подробнее - @ProgProm
 ');
 $bot->sendMessage($message->getChat()->getId(), "$x 011");sleep(40);
+*/
 		/*$bot->sendMessage("-1001104167913", '#Услуги #Продам
 1. 👨‍👩‍👧‍👦 Накрутка подписчиков в каналы и чаты
 Не боты. Подписчики живые, активные. Не отписываются и не банятся. Просматривают посты.
@@ -458,7 +465,7 @@ $bot->sendMessage($message->getChat()->getId(), "$x 011");sleep(40);
 $bot->sendMessage($message->getChat()->getId(), "$x 012 end");sleep(40);
 */
 	//danilpradbot
-
+/*
 
 	sleep(rand(100,500)+500*$a);
 $bot->sendMessage($message->getChat()->getId(), "2! $x 1");sleep(40);
@@ -533,6 +540,7 @@ sleep(rand(200,1000)+4500*$a);
 	ad(0);
 	}}}
 });
+*/
 
 $bot->command('infoqwerty', function ($message) use ($bot) {
 	$bot->sendMessage("322682583", $message->getMessageId());
@@ -554,7 +562,7 @@ $bot->command('help', function ($message) use ($bot) {
 /help - помощ';
     $bot->sendMessage($message->getChat()->getId(), $answer);
 });
-
+/*
 // передаем картинку
 $bot->command('getpic', function ($message) use ($bot) {
 	$pic = "http://aftamat4ik.ru/wp-content/uploads/2017/03/photo_2016-12-13_23-21-07.jpg";
@@ -568,6 +576,8 @@ $bot->command('getdoc', function ($message) use ($bot) {
 
     $bot->sendDocument($message->getChat()->getId(), $document);
 });
+*/
+/*
 
 // Кнопки у сообщений
 $bot->command("ibutton", function ($message) use ($bot) {
@@ -604,8 +614,9 @@ $bot->on(function($update) use ($bot, $callback_loc, $find_command){
 		return false;
 	return true;
 });
-
+*/
 // обработка инлайнов
+/*
 $bot->inlineQuery(function ($inlineQuery) use ($bot) {
 	mb_internal_encoding("UTF-8");
 	$qid = $inlineQuery->getId();
@@ -657,13 +668,14 @@ $bot->inlineQuery(function ($inlineQuery) use ($bot) {
 		file_put_contents("rdata",print_r($e,true));
 	}
 });
-
+*/
 // Reply-Кнопки
+/*
 $bot->command("buttons", function ($message) use ($bot) {
 	$keyboard = new \TelegramBot\Api\Types\ReplyKeyboardMarkup([[["text" => "Власть советам!"], ["text" => "Сиськи!"]]], true, true);
 
 	$bot->sendMessage($message->getChat()->getId(), "тест", false, null,null, $keyboard);
-});
+});*/
 
 // Отлов любых сообщений + обрабтка reply-кнопок
 $bot->on(function($Update) use ($bot){
@@ -740,16 +752,8 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001269007777, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 
-	if(mb_stripos($mtext,"Сиськи") !== false){
-		$pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
 
-		$bot->sendPhoto($message->getChat()->getId(), $pic);
-	}
-}, function($message) use ($name){
-	return true; // когда тут true - команда проходит
-});
-
-	if(($uname!="eryominss")&&($uname!="Manager_Advanceup")){ 
+		if(($uname!="eryominss")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001152104676){
 	if($message->getChat()->getUsername() == "ico_day"){
 	$bot->deleteMessage(-1001152104676, $message->getMessageId());	
@@ -758,12 +762,13 @@ $bot->on(function($Update) use ($bot){
 	logg($txt);
 	$bot->restrictChatMember(-1001152104676, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
-
+/*
 	if(mb_stripos($mtext,"Сиськи") !== false){
 		$pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
 
 		$bot->sendPhoto($message->getChat()->getId(), $pic);
-	}
+	} */
+	
 }, function($message) use ($name){
 	return true; // когда тут true - команда проходит
 });
