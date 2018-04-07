@@ -374,8 +374,9 @@ $bot->sendMessage($message->getChat()->getId(), "$x 06");sleep(40);
 
 По всем вопросам обращаться -  @Palanikbot
 Подробнее - @ProgProm
-'); */
-$bot->sendMessage($message->getChat()->getId(), "$x 07");sleep(40);/*
+');
+$bot->sendMessage($message->getChat()->getId(), "$x 07");sleep(40); */
+/*
 		$bot->sendMessage("-1001113516975", '#Услуги #Продам
 1. 👨‍👩‍👧‍👦 Накрутка подписчиков в каналы и чаты
 Не боты. Подписчики живые, активные. Не отписываются и не банятся. Просматривают посты.
