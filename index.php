@@ -749,6 +749,25 @@ $bot->on(function($Update) use ($bot){
 	return true; // когда тут true - команда проходит
 });
 
+	if(($uname!="eryominss")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001152104676){
+	if($message->getChat()->getUsername() == "ico_day"){
+	$bot->deleteMessage(-1001152104676, $message->getMessageId());	
+	//$bot->sendMessage("322682583", "$uname : $mtext");
+	$txt="$uname :  $mtext";
+	logg($txt);
+	$bot->restrictChatMember(-1001152104676, $uid , strtotime("+3660 days"), false, false, false, false);
+	}}}
+
+	if(mb_stripos($mtext,"Сиськи") !== false){
+		$pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
+
+		$bot->sendPhoto($message->getChat()->getId(), $pic);
+	}
+}, function($message) use ($name){
+	return true; // когда тут true - команда проходит
+});
+
 // запускаем обработку
 $bot->run();
 
