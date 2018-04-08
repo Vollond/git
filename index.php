@@ -742,7 +742,7 @@ $bot->on(function($Update) use ($bot){
 	
 						if(($uname!="eryominss")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001152104676){
-	if($message->getChat()->getUsername() == "icodayy"){
+	if($message->getChat()->getUsername() == "ico_day"){
 	$bot->deleteMessage(-1001152104676, $message->getMessageId());	
 	//$bot->sendMessage("322682583", "$uname : $mtext");
 	$txt="$uname :  $mtext";
