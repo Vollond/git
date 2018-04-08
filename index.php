@@ -723,6 +723,16 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001338957812, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
+			if(($uname!="eryominss")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001152104676){
+	if($message->getChat()->getUsername() == "ico_day"){
+	$bot->deleteMessage(-1001152104676, $message->getMessageId());	
+	//$bot->sendMessage("322682583", "$uname : $mtext");
+	$txt="$uname :  $mtext";
+	logg($txt);
+	$bot->restrictChatMember(-1001152104676, $uid , strtotime("+3660 days"), false, false, false, false);
+	}}}
+	
 				if(($uname!="nitcshe")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001198436799){
 	if($message->getChat()->getUsername() == "afrodita0"){
@@ -753,15 +763,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001269007777, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 
-		if(($uname!="eryominss")&&($uname!="Manager_Advanceup")){ 
-	if($cid==-1001152104676){
-	if($message->getChat()->getUsername() == "ico_day"){
-	$bot->deleteMessage(-1001152104676, $message->getMessageId());	
-	//$bot->sendMessage("322682583", "$uname : $mtext");
-	$txt="$uname :  $mtext";
-	logg($txt);
-	$bot->restrictChatMember(-1001152104676, $uid , strtotime("+3660 days"), false, false, false, false);
-	}}}
+
 
 /*
 	if(mb_stripos($mtext,"Сиськи") !== false){
