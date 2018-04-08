@@ -704,14 +704,11 @@ $bot->on(function($Update) use ($bot){
 	}}}
 	///
 	
-		if(($uname!="nitcshe")&&($uname!="Manager_Advanceup")){ 
+
 	if($cid==-1001368509136){
 	$bot->deleteMessage(-1001368509136, $message->getMessageId());	
-	//$bot->sendMessage("322682583", "$uname : $mtext");
-	$txt="$uname :  $mtext";
-	logg($txt);
-	$bot->restrictChatMember(-1001368509136, $uid , strtotime("+3660 days"), false, false, false, false);
-	}}
+	//$bot->restrictChatMember(-1001368509136, $uid , strtotime("+3660 days"), false, false, false, false);
+	}
 	//
 		if(($uname!="nitcshe")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001394826177){
