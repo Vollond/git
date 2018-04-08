@@ -753,7 +753,6 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001269007777, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 
-
 		if(($uname!="eryominss")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001152104676){
 	if($message->getChat()->getUsername() == "ico_day"){
@@ -763,6 +762,7 @@ $bot->on(function($Update) use ($bot){
 	logg($txt);
 	$bot->restrictChatMember(-1001152104676, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
+
 /*
 	if(mb_stripos($mtext,"Сиськи") !== false){
 		$pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
