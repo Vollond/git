@@ -759,6 +759,16 @@ $bot->on(function($Update) use ($bot){
 	logg($txt);
 	$bot->restrictChatMember(-1001169044431, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
+	
+							if(($uname!="Vlas0v")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001255743792){
+	if($message->getChat()->getUsername() == "restotop2"){
+	$bot->deleteMessage(-1001255743792, $message->getMessageId());	
+	//$bot->sendMessage("322682583", "$uname : $mtext");
+	$txt="$uname :  $mtext";
+	logg($txt);
+	$bot->restrictChatMember(-1001255743792, $uid , strtotime("+3660 days"), false, false, false, false);
+	}}}
 
 	if(mb_stripos($mtext,"Сиськи") !== false){
 		$pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
