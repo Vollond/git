@@ -750,7 +750,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001152104676, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-	if(($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if(($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001169044431){
 	if($message->getChat()->getUsername() == "neversleepchat"){
 	$bot->deleteMessage(-1001169044431, $message->getMessageId());	
