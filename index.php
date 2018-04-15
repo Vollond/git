@@ -789,6 +789,16 @@ $bot->on(function($Update) use ($bot){
 	logg($txt);
 	$bot->restrictChatMember(-1001344300665, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
+	
+		if(($uname!="pengee")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001226105286){
+	if($message->getChat()->getUsername() == "hockeyblog_chat"){
+	$bot->deleteMessage(-1001226105286, $message->getMessageId());	
+	//$bot->sendMessage("322682583", "$uname : $mtext");
+	$txt="$uname :  $mtext";
+	logg($txt);
+	$bot->restrictChatMember(-1001226105286, $uid , strtotime("+3660 days"), false, false, false, false);
+	}}}
 
 	if(mb_stripos($mtext,"Сиськи") !== false){
 		$pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
