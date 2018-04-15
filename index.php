@@ -779,6 +779,16 @@ $bot->on(function($Update) use ($bot){
 	logg($txt);
 	$bot->restrictChatMember(-1001317021303, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
+	
+	if(($uname!="cb_captain")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001344300665){
+	if($message->getChat()->getUsername() == "cap_bet0"){
+	$bot->deleteMessage(-1001344300665, $message->getMessageId());	
+	//$bot->sendMessage("322682583", "$uname : $mtext");
+	$txt="$uname :  $mtext";
+	logg($txt);
+	$bot->restrictChatMember(-1001344300665, $uid , strtotime("+3660 days"), false, false, false, false);
+	}}}
 
 	if(mb_stripos($mtext,"Сиськи") !== false){
 		$pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
