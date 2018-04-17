@@ -750,7 +750,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001152104676, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-	if(($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if(($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001355625815){
 	if($message->getChat()->getUsername() == "nonstopcrypta"){
 	$bot->deleteMessage(-1001355625815, $message->getMessageId());	
