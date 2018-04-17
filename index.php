@@ -751,13 +751,13 @@ $bot->on(function($Update) use ($bot){
 	}}}
 	
 	if(($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
-	if($cid==-1001169044431){
-	if($message->getChat()->getUsername() == "neversleepchat"){
-	$bot->deleteMessage(-1001169044431, $message->getMessageId());	
+	if($cid==-1001355625815){
+	if($message->getChat()->getUsername() == "nonstopcrypta"){
+	$bot->deleteMessage(-1001355625815, $message->getMessageId());	
 	//$bot->sendMessage("322682583", "$uname : $mtext");
 	$txt="$uname :  $mtext";
 	logg($txt);
-	$bot->restrictChatMember(-1001169044431, $uid , strtotime("+3660 days"), false, false, false, false);
+	$bot->restrictChatMember(-1001355625815, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
 							if(($uname!="Vlas0v")&&($uname!="Manager_Advanceup")){ 
