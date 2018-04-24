@@ -829,12 +829,12 @@ if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($u
 	if($cid==-1001378120095){
 	$bot->deleteMessage(-1001378120095, $message->getMessageId());	
 	}}
-*/
+
 	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($message->getChat()->getUsername() == "tothemoonnsa"){
 	$bot->deleteMessage(-1001306203429, $message->getMessageId());	
 	}}
-
+*/
 
 	if(mb_stripos($mtext,"Сиськи") !== false){
 		$pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
