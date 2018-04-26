@@ -759,7 +759,7 @@ $bot->on(function($Update) use ($bot){
 	logg($txt);
 	$bot->restrictChatMember(-1001355625815, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
-
+/*
 	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001194980803){
 	if($message->getChat()->getUsername() == "NeverSleepClub"){
@@ -769,6 +769,7 @@ $bot->on(function($Update) use ($bot){
 	logg($txt);
 	$bot->restrictChatMember(-1001194980803, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
+*/	
 	
 							if(($uname!="Vlas0v")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001255743792){
@@ -809,7 +810,7 @@ $bot->on(function($Update) use ($bot){
 	logg($txt);
 	$bot->restrictChatMember(-1001226105286, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
-
+/*
 	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001229394138){
 	$bot->deleteMessage(-1001229394138, $message->getMessageId());	
@@ -834,7 +835,7 @@ if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($u
 	if($message->getChat()->getUsername() == "tothemoonnsa"){
 	$bot->deleteMessage(-1001306203429, $message->getMessageId());	
 	}}
-
+*/
 	
 			if(($uname!="pengee")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001393978960){
