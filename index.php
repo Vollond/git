@@ -843,6 +843,11 @@ if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($u
 	$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
+		if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if($message->getChat()->getUsername() == "NeverSleepCompany"){
+	$bot->deleteMessage(-1001189177210, $message->getMessageId());	
+	}}
+	
 	
 	if(mb_stripos($mtext,"Сиськи") !== false){
 		$pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
