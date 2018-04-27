@@ -822,7 +822,7 @@ $bot->on(function($Update) use ($bot){
 	if($message->getChat()->getUsername() == "neversleep_ico"){
 	$bot->deleteMessage(-1001275388772, $message->getMessageId());	
 	}}
-	*/
+	
 	
 	//All Crypto News
 	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
@@ -858,7 +858,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->deleteMessage(-1001309600884, $message->getMessageId());	
 	}}
 	
-	
+	*/
 	
 	
 			if(($uname!="pengee")&&($uname!="Manager_Advanceup")){ 
