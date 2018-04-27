@@ -831,6 +831,15 @@ $bot->on(function($Update) use ($bot){
 	}}
 	
 	
+	
+	//NeverSleepWorld
+	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001309600884){
+	$bot->deleteMessage(-1001309600884, $message->getMessageId());	
+	}}
+	
+	*/
+	
 	//Crypto World
 	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001378120095){
@@ -849,16 +858,6 @@ $bot->on(function($Update) use ($bot){
 	if($message->getChat()->getUsername() == "NeverSleepCompany"){
 	$bot->deleteMessage(-1001189177210, $message->getMessageId());	
 	}}
-
-	
-	
-	//NeverSleepWorld
-	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
-	if($cid==-1001309600884){
-	$bot->deleteMessage(-1001309600884, $message->getMessageId());	
-	}}
-	
-	*/
 	
 	
 			if(($uname!="pengee")&&($uname!="Manager_Advanceup")){ 
