@@ -824,28 +824,6 @@ $bot->on(function($Update) use ($bot){
 	}}
 	
 	
-	//All Crypto News
-	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
-	if($cid==-1001206754345){
-	$bot->deleteMessage(-1001206754345, $message->getMessageId());	
-	}}
-	
-	
-	
-	//NeverSleepWorld
-	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
-	if($cid==-1001309600884){
-	$bot->deleteMessage(-1001309600884, $message->getMessageId());	
-	}}
-	
-	*/
-	
-	//Crypto World
-	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
-	if($cid==-1001378120095){
-	$bot->deleteMessage(-1001378120095, $message->getMessageId());	
-	}}
-	
 	//tothemoonnsa
 	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($message->getChat()->getUsername() == "tothemoonnsa"){
@@ -858,6 +836,29 @@ $bot->on(function($Update) use ($bot){
 	if($message->getChat()->getUsername() == "NeverSleepCompany"){
 	$bot->deleteMessage(-1001189177210, $message->getMessageId());	
 	}}
+	
+	
+	*/
+	
+	//NeverSleepWorld
+	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001309600884){
+	$bot->deleteMessage(-1001309600884, $message->getMessageId());	
+	}}
+	
+	//Crypto World
+	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001378120095){
+	$bot->deleteMessage(-1001378120095, $message->getMessageId());	
+	}}
+	
+	//All Crypto News
+	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001206754345){
+	$bot->deleteMessage(-1001206754345, $message->getMessageId());	
+	}}
+	
+	
 	
 	
 			if(($uname!="pengee")&&($uname!="Manager_Advanceup")){ 
