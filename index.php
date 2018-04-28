@@ -858,6 +858,11 @@ $bot->on(function($Update) use ($bot){
 	$bot->deleteMessage(-1001206754345, $message->getMessageId());	
 	}}
 	
+	//BigCryptoGroup
+		if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001229975162){
+	$bot->deleteMessage(-1001229975162, $message->getMessageId());	
+	}}
 	
 	
 	
