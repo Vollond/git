@@ -760,7 +760,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001355625815, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 /*
-	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001194980803){
 	if($message->getChat()->getUsername() == "NeverSleepClub"){
 	$bot->deleteMessage(-1001194980803, $message->getMessageId());	
@@ -813,26 +813,26 @@ $bot->on(function($Update) use ($bot){
 
 	
 	/*
-	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001229394138){
 	$bot->deleteMessage(-1001229394138, $message->getMessageId());	
 	}}
 
-	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($message->getChat()->getUsername() == "neversleep_ico"){
 	$bot->deleteMessage(-1001275388772, $message->getMessageId());	
 	}}
 	
 	
 	//tothemoonnsa
-	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($message->getChat()->getUsername() == "tothemoonnsa"){
 	$bot->deleteMessage(-1001306203429, $message->getMessageId());	
 	}}
 	
 	
 	//NeverSleepCompany
-		if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+		if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($message->getChat()->getUsername() == "NeverSleepCompany"){
 	$bot->deleteMessage(-1001189177210, $message->getMessageId());	
 	}}
@@ -841,25 +841,25 @@ $bot->on(function($Update) use ($bot){
 	*/
 	
 	//NeverSleepWorld
-	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001309600884){
 	$bot->deleteMessage(-1001309600884, $message->getMessageId());	
 	}}
 	
 	//Crypto World
-	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001378120095){
 	$bot->deleteMessage(-1001378120095, $message->getMessageId());	
 	}}
 	
 	//All Crypto News
-	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001206754345){
 	$bot->deleteMessage(-1001206754345, $message->getMessageId());	
 	}}
 	
 	//BigCryptoGroup
-		if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+		if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001229975162){
 	$bot->deleteMessage(-1001229975162, $message->getMessageId());	
 	}}
