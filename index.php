@@ -823,7 +823,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->deleteMessage(-1001275388772, $message->getMessageId());	
 	}}
 	
-	
+	*/
 	//tothemoonnsa
 	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($message->getChat()->getUsername() == "tothemoonnsa"){
@@ -838,7 +838,7 @@ $bot->on(function($Update) use ($bot){
 	}}
 	
 	
-	*/
+	
 	
 	//NeverSleepWorld
 	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
