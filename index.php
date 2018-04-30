@@ -823,7 +823,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->deleteMessage(-1001275388772, $message->getMessageId());	
 	}}
 	
-	*/
+	
 	//tothemoonnsa
 	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($message->getChat()->getUsername() == "tothemoonnsa"){
@@ -837,8 +837,12 @@ $bot->on(function($Update) use ($bot){
 	$bot->deleteMessage(-1001189177210, $message->getMessageId());	
 	}}
 	
-	
-	
+		//Crypto World
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001378120095){
+	$bot->deleteMessage(-1001378120095, $message->getMessageId());	
+	}}
+*/	
 	
 	//NeverSleepWorld
 	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
@@ -846,11 +850,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->deleteMessage(-1001309600884, $message->getMessageId());	
 	}}
 	
-	//Crypto World
-	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
-	if($cid==-1001378120095){
-	$bot->deleteMessage(-1001378120095, $message->getMessageId());	
-	}}
+
 	
 	//All Crypto News
 	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
