@@ -872,7 +872,7 @@ $bot->on(function($Update) use ($bot){
 	if($cid==-1001393978960){
 	if($message->getChat()->getUsername() == "advanceup2"){
 	$bot->deleteMessage(-1001393978960, $message->getMessageId());	
-	$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
+	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
 	
