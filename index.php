@@ -875,6 +875,11 @@ if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($una
 	
 	
 */		
+			if(($uname!="eugene_HB")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001330748359){
+	$bot->deleteMessage(-1001330748359, $message->getMessageId());	
+	}}
+
 			if(($uname!="pengee")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001393978960){
 	if($message->getChat()->getUsername() == "advanceup2"){
