@@ -836,7 +836,7 @@ $bot->on(function($Update) use ($bot){
 	}}
 	
 	
-*/		
+	
 if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001229394138){
 	$bot->deleteMessage(-1001229394138, $message->getMessageId());	
@@ -874,7 +874,7 @@ if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($una
 	}}
 	
 	
-	
+*/		
 			if(($uname!="pengee")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001393978960){
 	if($message->getChat()->getUsername() == "advanceup2"){
