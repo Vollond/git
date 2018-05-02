@@ -867,6 +867,12 @@ if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($una
 	$bot->deleteMessage(-1001229975162, $message->getMessageId());	
 	}}
 	
+	//NeverSleepClub
+		if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001194980803){
+	$bot->deleteMessage(-1001194980803, $message->getMessageId());	
+	}}
+	
 	
 	
 			if(($uname!="pengee")&&($uname!="Manager_Advanceup")){ 
