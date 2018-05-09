@@ -888,7 +888,7 @@ if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($una
 	}}}
 	
 	//Марафоны стройности
-			if(($uname!="Darika_suv")&&($uname!="Manager_Advanceup")){ 
+	 if(($uname!="brikroll")&&($uname!="Darika_suv")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001208850489){
 	$bot->deleteMessage(-1001208850489, $message->getMessageId());	
 	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
