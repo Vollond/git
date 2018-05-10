@@ -873,7 +873,12 @@ if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($una
 	$bot->deleteMessage(-1001194980803, $message->getMessageId());	
 	}}
 	
-	
+	//Марафоны стройности
+	 if(($uname!="brikroll")&&($uname!="Darika_suv")&&($uname!="Manager_Advanceup")){ 
+	if($cid==-1001208850489){
+	$bot->deleteMessage(-1001208850489, $message->getMessageId());	
+	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
+	}}
 */		
 			if(($uname!="eugene_HB")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001330748359){
@@ -887,12 +892,7 @@ if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($una
 	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-	//Марафоны стройности
-	 if(($uname!="brikroll")&&($uname!="Darika_suv")&&($uname!="Manager_Advanceup")){ 
-	if($cid==-1001208850489){
-	$bot->deleteMessage(-1001208850489, $message->getMessageId());	
-	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
-	}}
+	
 	
 	
 	
