@@ -892,6 +892,14 @@ if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($una
 	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
+			if(($uname!="Kirill_Stepanjuk")&&($uname!="Manager_Advanceup")&&($uname!="Manager_Advanceup2")){ 
+	if($cid==-1001258762150){
+	$bot->deleteMessage(-1001258762150, $message->getMessageId());	
+	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
+	}}
+	
+	
+	
 	
 	
 	
