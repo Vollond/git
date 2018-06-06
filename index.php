@@ -690,7 +690,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001256758693, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	///
-		if(($uname!="nitcshe")&&($uname!="Manager_Advanceup2")){ 
+		if(($uname!="nitcshe")&&($uname!="Manager_Advanceup2")&&($uname!="Advanceup_Manager")){ 
 	if($cid==-1001394826177){
 	if($message->getChat()->getUsername() == "advanceup"){
 	$bot->deleteMessage(-1001394826177, $message->getMessageId());	
@@ -885,7 +885,7 @@ if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($una
 	$bot->deleteMessage(-1001330748359, $message->getMessageId());	
 	}}
 
-			if(($uname!="pengee")&&($uname!="Manager_Advanceup2")){ 
+			if(($uname!="pengee")&&($uname!="Manager_Advanceup2")&&($uname!="@Advanceup_Manager")){ 
 	if($cid==-1001393978960){
 	if($message->getChat()->getUsername() == "advanceup2"){
 	$bot->deleteMessage(-1001393978960, $message->getMessageId());	
