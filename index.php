@@ -917,12 +917,13 @@ if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($una
 	$bot->deleteMessage(-1001356003095, $message->getMessageId());	
 	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}
+	*/
 		if(($uname!="EtherCup")&&($uname!="Manager_Advanceup2")&&($uname!="Advanceup_manager0)")){ 
 	if($cid==-1001381346366){
 	$bot->deleteMessage(-1001381346366, $message->getMessageId());	
 	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}
-	*/
+	
 	
 	if(mb_stripos($mtext,"Сиськи") !== false){
 		$pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
