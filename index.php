@@ -925,11 +925,12 @@ if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($una
 	}}
 	
 	
-	if(mb_stripos($mtext,"Сиськи") !== false){
+/*	if(mb_stripos($mtext,"Сиськи") !== false){
 		$pic = "http://aftamat4ik.ru/wp-content/uploads/2017/05/14277366494961.jpg";
 
 		$bot->sendPhoto($message->getChat()->getId(), $pic);
 	}
+	*/
 }, function($message) use ($name){
 	return true; // когда тут true - команда проходит
 });
