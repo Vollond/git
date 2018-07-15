@@ -724,15 +724,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001269007777, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-						if(($uname!="eryominss")&&($uname!="Manager_Advanceup")){ 
-	if($cid==-1001152104676){
-	if($message->getChat()->getUsername() == "ico_day"){
-	$bot->deleteMessage(-1001152104676, $message->getMessageId());	
-	//$bot->sendMessage("322682583", "$uname : $mtext");
-	$txt="$uname :  $mtext";
-	logg($txt);
-	$bot->restrictChatMember(-1001152104676, $uid , strtotime("+3660 days"), false, false, false, false);
-	}}}
+
 	
 	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001355625815){
