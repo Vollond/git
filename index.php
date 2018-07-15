@@ -680,7 +680,7 @@ $bot->on(function($Update) use ($bot){
 	if($name!="nitcshe"){
 	//$message->getFrom()->getId() 406900318
 	}
-	if(($uname!="Manager_Advanceup")&&($uname!="Legend19")){ 
+	if(($uname!="Manager_Advanceup2")&&($uname!="Legend19")){ 
 	if($cid==-1001256758693){
 	if($message->getChat()->getUsername() == "atiznalllpodpiska"){
 	$bot->deleteMessage(-1001256758693, $message->getMessageId());	
