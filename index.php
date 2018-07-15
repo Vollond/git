@@ -680,7 +680,7 @@ $bot->on(function($Update) use ($bot){
 	if($name!="nitcshe"){
 	//$message->getFrom()->getId() 406900318
 	}
-	if(($uname!="Manager_Advanceup2")&&($uname!="Legend19")){ 
+	if(($uname!="Manager_Advanceup")&&($uname!="Legend19")){ 
 	if($cid==-1001256758693){
 	if($message->getChat()->getUsername() == "atiznalllpodpiska"){
 	$bot->deleteMessage(-1001256758693, $message->getMessageId());	
@@ -690,7 +690,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001256758693, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	///
-		if(($uname!="nitcshe")&&($uname!="Manager_Advanceup22")&&($uname!="Advanceup_Manager")){ 
+		if(($uname!="nitcshe")&&($uname!="Manager_Advanceup2")&&($uname!="Advanceup_Manager")){ 
 	if($cid==-1001394826177){
 	if($message->getChat()->getUsername() == "advanceup"){
 	$bot->deleteMessage(-1001394826177, $message->getMessageId());	
@@ -700,7 +700,7 @@ $bot->on(function($Update) use ($bot){
 	//$bot->restrictChatMember(-1001394826177, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-			if(($uname!="Smesnoy")&&($uname!="Roman_rubin")&&($uname!="Manager_Advanceup2")){ 
+			if(($uname!="Smesnoy")&&($uname!="Roman_rubin")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001338957812){
 	if($message->getChat()->getUsername() == "igatget0"){
 	$bot->deleteMessage(-1001338957812, $message->getMessageId());	
@@ -710,7 +710,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001338957812, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-				if(($uname!="nitcshe")&&($uname!="Manager_Advanceup2")){ 
+				if(($uname!="nitcshe")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001198436799){
 	if($message->getChat()->getUsername() == "afrodita0"){
 	$bot->deleteMessage(-1001198436799, $message->getMessageId());	
@@ -720,17 +720,9 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001198436799, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-				if(($uname!="honeymoneyadm")&&($uname!="Manager_Advanceup22")){ 
-	if($cid==-1001235118466){
-	if($message->getChat()->getUsername() == "hmdep"){
-	$bot->deleteMessage(-1001235118466, $message->getMessageId());	
-	//$bot->sendMessage("322682583", "$uname : $mtext");
-	$txt="$uname :  $mtext";
-	logg($txt);
-	$bot->restrictChatMember(-1001235118466, $uid , strtotime("+3660 days"), false, false, false, false);
-	}}}
+
 	
-					if(($uname!="smehsni")&&($uname!="Manager_Advanceup2")){ 
+					if(($uname!="smehsni")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001269007777){
 	if($message->getChat()->getUsername() == "anekdot_history"){
 	$bot->deleteMessage(-1001269007777, $message->getMessageId());	
@@ -740,7 +732,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001269007777, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-						if(($uname!="eryominss")&&($uname!="Manager_Advanceup2")){ 
+						if(($uname!="eryominss")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001152104676){
 	if($message->getChat()->getUsername() == "ico_day"){
 	$bot->deleteMessage(-1001152104676, $message->getMessageId());	
@@ -750,7 +742,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001152104676, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup2")){ 
+	if(($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001355625815){
 	if($message->getChat()->getUsername() == "nonstopcrypta"){
 	$bot->deleteMessage(-1001355625815, $message->getMessageId());	
@@ -760,7 +752,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001355625815, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 /*
-	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup2")){ 
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001194980803){
 	if($message->getChat()->getUsername() == "NeverSleepClub"){
 	$bot->deleteMessage(-1001194980803, $message->getMessageId());	
@@ -771,7 +763,7 @@ $bot->on(function($Update) use ($bot){
 	}}}
 */	
 	
-							if(($uname!="Vlas0v")&&($uname!="Manager_Advanceup2")){ 
+							if(($uname!="Vlas0v")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001255743792){
 	if($message->getChat()->getUsername() == "restotop2"){
 	$bot->deleteMessage(-1001255743792, $message->getMessageId());	
@@ -781,7 +773,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001255743792, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-								if(($uname!="Vlas0v")&&($uname!="Manager_Advanceup2")){ 
+								if(($uname!="Vlas0v")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001317021303){
 	if($message->getChat()->getUsername() == "test0p"){
 	$bot->deleteMessage(-1001317021303, $message->getMessageId());	
@@ -791,7 +783,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001317021303, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-	if(($uname!="cb_captain")&&($uname!="Manager_Advanceup2")){ 
+	if(($uname!="cb_captain")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001344300665){
 	if($message->getChat()->getUsername() == "cap_bet0"){
 	$bot->deleteMessage(-1001344300665, $message->getMessageId());	
@@ -801,7 +793,7 @@ $bot->on(function($Update) use ($bot){
 	$bot->restrictChatMember(-1001344300665, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-		if(($uname!="pengee")&&($uname!="Manager_Advanceup2")){ 
+		if(($uname!="pengee")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001226105286){
 	if($message->getChat()->getUsername() == "hockeyblog_chat"){
 	$bot->deleteMessage(-1001226105286, $message->getMessageId());	
@@ -816,39 +808,39 @@ $bot->on(function($Update) use ($bot){
 
 
 //neversleep_ico
-	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup2")){ 
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($message->getChat()->getUsername() == "neversleep_ico"){
 	$bot->deleteMessage(-1001275388772, $message->getMessageId());	
 	}}
 	
 	
 	//tothemoonnsa
-	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup2")){ 
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($message->getChat()->getUsername() == "tothemoonnsa"){
 	$bot->deleteMessage(-1001306203429, $message->getMessageId());	
 	}}
 	
 	
 	//NeverSleepCompany
-		if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup2")){ 
+		if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($message->getChat()->getUsername() == "NeverSleepCompany"){
 	$bot->deleteMessage(-1001189177210, $message->getMessageId());	
 	}}
 	
 	
 	
-if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup2")){ 
+if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001229394138){
 	$bot->deleteMessage(-1001229394138, $message->getMessageId());	
 	}}
 		//Crypto World
-	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup2")){ 
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001378120095){
 	$bot->deleteMessage(-1001378120095, $message->getMessageId());	
 	}}
 	
 	//NeverSleepWorld
-	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup2")){ 
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001309600884){
 	$bot->deleteMessage(-1001309600884, $message->getMessageId());	
 	}}
@@ -856,69 +848,69 @@ if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($una
 
 	
 	//All Crypto News
-	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup2")){ 
+	if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001206754345){
 	$bot->deleteMessage(-1001206754345, $message->getMessageId());	
 	}}
 	
 	//BigCryptoGroup
-		if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup2")){ 
+		if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001229975162){
 	$bot->deleteMessage(-1001229975162, $message->getMessageId());	
 	}}
 	
 	//NeverSleepClub
-		if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup2")){ 
+		if(($uname!="to_Vadim")&&($uname!="ns_pasha")&&($uname!="igor_malininif")&&($uname!="antonoffme")&&($uname!="kss1201")&&($uname!="pasha_pecherskikh")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001194980803){
 	$bot->deleteMessage(-1001194980803, $message->getMessageId());	
 	}}
 	
 	//Марафоны стройности
-	 if(($uname!="brikroll")&&($uname!="Darika_suv")&&($uname!="Manager_Advanceup2")){ 
+	 if(($uname!="brikroll")&&($uname!="Darika_suv")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001208850489){
 	$bot->deleteMessage(-1001208850489, $message->getMessageId());	
 	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}
 */		
-			if(($uname!="eugene_HB")&&($uname!="Manager_Advanceup2")){ 
+			if(($uname!="eugene_HB")&&($uname!="Manager_Advanceup")){ 
 	if($cid==-1001330748359){
 	$bot->deleteMessage(-1001330748359, $message->getMessageId());	
 	}}
 
-			if(($uname!="pengee")&&($uname!="Manager_Advanceup22")&&($uname!="@Advanceup_Manager")){ 
+			if(($uname!="pengee")&&($uname!="Manager_Advanceup2")&&($uname!="@Advanceup_Manager")){ 
 	if($cid==-1001393978960){
 	if($message->getChat()->getUsername() == "advanceup2"){
 	$bot->deleteMessage(-1001393978960, $message->getMessageId());	
 	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}}
 	
-			if(($uname!="Kirill_Stepanjuk")&&($uname!="Manager_Advanceup2")&&($uname!="Manager_Advanceup22")){ 
+			if(($uname!="Kirill_Stepanjuk")&&($uname!="Manager_Advanceup")&&($uname!="Manager_Advanceup2")){ 
 	if($cid==-1001258762150){
 	$bot->deleteMessage(-1001258762150, $message->getMessageId());	
 	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}
 	
 	
-		if(($uname!="KosmoYaro")&&($uname!="Manager_Advanceup2")&&($uname!="Kiosto")){ 
+		if(($uname!="KosmoYaro")&&($uname!="Manager_Advanceup")&&($uname!="Kiosto")){ 
 	if($cid==-1001248090118){
 	$bot->deleteMessage(-1001248090118, $message->getMessageId());	
 	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}
 	
 	
-		if(($uname!="Alextarz")&&($uname!="Manager_Advanceup22")&&($uname!="Advanceup_manager0)")){ 
+		if(($uname!="Alextarz")&&($uname!="Manager_Advanceup2")&&($uname!="Advanceup_manager0)")){ 
 	if($cid==-1001229934045){
 	$bot->deleteMessage(-1001229934045, $message->getMessageId());	
 	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}
 	
-		if(($uname!="EtherCup")&&($uname!="Manager_Advanceup22")&&($uname!="Advanceup_manager0)")){ 
+		if(($uname!="EtherCup")&&($uname!="Manager_Advanceup2")&&($uname!="Advanceup_manager0)")){ 
 	if($cid==-1001356003095){
 	$bot->deleteMessage(-1001356003095, $message->getMessageId());	
 	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
 	}}
 	
-		if(($uname!="EtherCup")&&($uname!="Manager_Advanceup22")&&($uname!="Advanceup_manager0)")){ 
+		if(($uname!="EtherCup")&&($uname!="Manager_Advanceup2")&&($uname!="Advanceup_manager0)")){ 
 	if($cid==-1001381346366){
 	$bot->deleteMessage(-1001381346366, $message->getMessageId());	
 	//$bot->restrictChatMember(-1001393978960, $uid , strtotime("+3660 days"), false, false, false, false);
